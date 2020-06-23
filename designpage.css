@@ -1,0 +1,192 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    /* background : linear-gradient(to bottom , yellow , khaki) no-repeat; */
+}
+* {
+    margin : 0px;
+    padding : 0px;
+}
+/************NavBar************/
+nav {
+    background-color: rgb(0 , 0 , 0 , 0.5);
+    margin : 10px;
+    border-radius: 12px;
+    width: 98%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    top : 0;
+    left: 15px;
+}
+nav ul {
+    margin-left : 50px;
+    list-style: none;
+}
+nav ul li {
+    display: inline-block;
+}
+nav ul li a {
+    display: inline-block;
+    font-size: 1rem;
+    text-decoration: none;
+    color : white;
+    margin : 10px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition-property: background-color;
+    transition-duration: 0.35s;
+    transition-timing-function: ease-in;
+}
+#drop {
+    display: none;
+}
+nav ul li a:hover {
+    background-color: white;
+    color: black;
+}
+
+@media only screen and (max-width:730px) {
+    nav {
+        height: 65px;
+        left : 2px;
+    }
+    nav ul li{
+        display: none;
+    }
+    nav.dropit {
+        height: auto;
+    }
+    nav.dropit ul {
+        margin-left : 10px;
+        list-style: none;
+    }
+    nav.dropit ul li{
+        display: block;
+        margin-left: 10px;
+    }
+    #drop {
+        display: block;
+        position: absolute !important;
+        top : -2px;
+        right : 10px;
+    }
+}
+/************End - NavBar************/
+
+/************Mid-Section************/
+
+section {
+    text-align: center;
+    width: 80%;
+    margin: 100px auto;
+    margin-top: 150px;
+}
+section a {
+    text-decoration: none;
+    color: black;
+}
+section div {
+    text-align: left;
+    margin: 100px;
+    padding : 50px;
+    box-shadow: 3px 3px 10px 6px grey;
+}
+
+section div h1 , p {
+    /* letter-spacing: 1.5px; */
+    line-height: 30px;
+    margin: 20px auto;
+}
+hr {
+    border: dotted 6px;
+    width: 4%;
+    border-color: darkgray;
+    margin : 30px auto;
+    border-bottom: none;
+}
+img {
+    width : 15%;
+}
+.left {
+    float: left;
+    margin-right: 50px;
+}
+.right {
+    float : right;
+    margin-left: 50px;
+}
+
+section div:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 3px 0px;
+    border-color: gray;
+}
+
+.java {
+    position: relative;
+    bottom: 30px;
+}
+
+.c {
+    position : relative;
+    top : 5px;
+    z-index: -1;
+}
+
+.cpp {
+    position: relative;
+    top : 2px;
+    z-index: -1;
+}
+
+section div h1 {
+    color: green;
+    margin-top: 0px;
+}
+@media only screen and (max-width : 750px) {
+    nav {
+        left : 3px;
+    }
+    section {
+        width: 100%;
+    }
+    section div {
+        margin : 100px 10px;
+    }
+}
+@media only screen and (min-width : 750px) {
+    nav {
+        left : 8px;
+    }
+    section {
+        width: 90%;
+    }
+    section div {
+        margin : 100px 30px;
+    }
+}
+@media only screen and (min-width : 1000px) {
+    nav {
+        left : 8px;
+    }
+    section {
+        width: 80%;
+    }
+    section div {
+        margin : 100px;
+    }
+}
+/************End-Mid-Section**************/
+/************Footer**************/
+footer {
+    text-align: center;
+    margin: 100px;
+    font-family: cursive;
+    color: burlywood;
+}
