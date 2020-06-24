@@ -1,6 +1,8 @@
 var questions = ['Which special keyword is used to define constructor in python class ?','Suppose x=[1,2,3] ; x.extend([4,5]) ; x.append([6,7,8]) then what is output of : print(len(x)) ','Which of the following is ordered and mutable data-type in python ?','How we can overload print function in python ?',`Which of the following is valid way to specify the string literal foo'bar in python : `];
-var options = [['__constructor__', '__const__' , '__init__' , '__def__'],['5', '7' , '6' , '8'],['tuple', 'list' , 'set' , 'str'],['We cannot do it in python', 'No need to overload we can simply print using `print` function' , 'using __str__ method' , 'None of these'],[`'foo'bar'`, `'foo''bar'` , `'foo\\'bar'` , `It's not possible`]];
-var corr_opt = [['op3','que0','__init__'] , ['op7','que1','6'] , ['op10','que2','list'] , ['op15','que3','using __str__ method'] , ['op19','que4',`'foo\'bar'`]];
+var options = [['__constructor__', '__const__' , '__init__' , '__def__'],['5', '7' , '6' , '8'],['tuple', 'list' , 'set' , 'str'],['We cannot do it in python', 'No need to overload we can simply print using `print` function' , 'using __str__ method' , 'None of these'],[`'foo'bar'`, `'foo''bar'` , `"foo'bar"` , `It's not possible`]];
+var corr_opt = [['op3','que0','__init__'] , ['op7','que1','6'] , ['op10','que2','list'] , ['op15','que3','using __str__ method'] , ['op19','que4',`"foo'bar"`]];
+var sec;
+var int;
 function startquiz() {
     document.querySelector(".start").style.display = "none";
     var data = document.querySelector("section");
@@ -15,8 +17,13 @@ function startquiz() {
         data.innerHTML += '<div class = "list" >' + '<h3 class = "que" >' + 'Q.' + (i+1) + ' ' + questions[i] + '</h3>' + '<ul id = que' + i + '>' + x + '</ul>' + '</div>';
     }
     document.querySelector('section').innerHTML += '<div class = "submit"><button class = "btn" onclick = "submitquiz()">submit</button></div>';
+    sec = 60;
+    int = setInterval(timer, 1000);
 }
 function submitquiz() {
+    window.clearInterval(int);
+    document.querySelector('.time').className = 'time';
+    document.querySelector('.time').innerHTML = "Timer";
     var marks = 0;
     var count = 1;
     for(var k = 0 ; k < 5 ; k++){
@@ -38,4 +45,29 @@ function submitquiz() {
     document.querySelector('.submit').style.display = 'none';
     document.querySelector('section').innerHTML += '<div class = "score"><button class = "btn scr">Score = ' + marks + '/100</button></div>';
     document.querySelector('section').innerHTML += '<div class = "restart"><button class = "btn" onclick = "startquiz()">Retake</button></div>';
+}
+function timer() {
+    sec--;
+    var temp = document.querySelector('.time');
+    if (typeof (temp) != undefined && temp != null) { }
+    else
+        document.querySelector('body').innerHTML += '<button class = "time"></button>';
+    if (sec >= 0) {
+        if (sec >= 10) {
+            document.querySelector('.time').className = 'time';
+            document.querySelector('.time').innerHTML = "Time : " + sec;
+        }
+        else {
+            document.querySelector('.time').className = 'time red';
+            document.querySelector('.time').innerHTML = "Time : 0" + sec;
+        }
+    }
+    else {
+        window.clearInterval(int);
+        document.querySelector('audio').play();
+        document.querySelector('.time').innerHTML = "Time : 00";
+        window.confirm("Sorry!! TimeUp !!\n Click 'ok' to continue");
+        submitquiz();
+    }
+    return;
 }
